@@ -4,10 +4,14 @@ let pokemonList = [
     {name: 'Caterpie', type: 'Bug', height: '.3'}
 ];
 
-for (let i= 0; i < pokemonList.length; i++) {
-    if (pokemonList[i].height >= .7) {
-        document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ") - Wow, that's big!<br>");
-    } else {
-        document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ")<br>");
-    }
-};
+// for (let i= 0; i < pokemonList.length; i++) {
+//     if (pokemonList[i].height >= .7) {
+//         document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ") - Wow, that's big!<br><br>");
+//     } else {
+//         document.write(pokemonList[i].name + " (height: " + pokemonList[i].height + ")<br><br>");
+//     }
+// };
+
+pokemonList.forEach(function(pokemon) {
+    console.log(pokemon.name + 'is' + pokemon.height + 'meters tall and is a ' + pokemon.type + ' type');
+})
