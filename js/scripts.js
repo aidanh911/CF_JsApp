@@ -29,6 +29,8 @@ let pokemonRepository = (function () {
             showDetails(pokemon)
         })
     }
+
+    //unresolved results variable here
     function loadList() {
         return fetch(apiUrl).then(function (response){
            return response.json();
@@ -46,6 +48,7 @@ let pokemonRepository = (function () {
         })
     };
 
+    // problem with sprites.front default here
     function loadDetails(item) {
         let url = item.detailsUrl;
         return fetch(url).then(function(response) {
@@ -63,6 +66,7 @@ let pokemonRepository = (function () {
         })
     }
 
+    //loadDetails function is not getting called here
     return {
         add: add,
         getAll: getAll,
