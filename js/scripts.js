@@ -29,7 +29,7 @@ let pokemonRepository = (function () {
             showDetails(pokemon)
         })
     }
-
+    // changes to commit
     //unresolved results variable here
     function loadList() {
         return fetch(apiUrl).then(function (response){
