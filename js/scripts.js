@@ -1,6 +1,6 @@
 let pokemonRepository = (function () {
     let pokemonList = [];
-    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+    let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=20';
 
     function add(pokemon) {
         if (
@@ -64,6 +64,38 @@ let pokemonRepository = (function () {
             console.log(pokemon)
         })
     }
+
+    (function () {
+        function showModal(title, text) {
+            let modalContainer = document.querySelector('#modal-container');
+
+            modalContainer.innerHTML = '';
+
+            let modal = document.createElement('div');
+
+            modal.classList.add('modal');
+
+            let closeButtonElement = document.createElement('button');
+            closeButtonElement.classList.add('modal-close');
+            closeButtonElement.innerText = 'Close';
+
+            let titleElement = document.createElement('h1');
+            titleElement.innerText = title;
+
+            let contentElement = document.createElement('p');
+            contentElement.innerText = text;
+
+            modal.appendChild(closeButtonElement);
+            modal.appendChild(titleElement);
+            modal.appendChild(contentElement);
+            modalContainer.appendChild(modal);
+
+            modalContainer.classList.add('is-visible');
+        }
+        document.querySelector('#show-modal').addEventListener('click', () => {
+            showModal('Modal Title', 'this is the modal content');
+        })
+    })();
 
     //loadDetails function is not getting called here
     return {
