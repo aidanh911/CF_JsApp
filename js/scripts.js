@@ -29,7 +29,7 @@ let pokemonRepository = (function () {
         })
     }
 
-    //unresolved results variable here
+
     function loadList() {
         return fetch(apiUrl).then(function (response){
             return response.json();
@@ -47,7 +47,7 @@ let pokemonRepository = (function () {
         })
     };
 
-    // problem with sprites.front default here
+
     function loadDetails(item) {
         let url = item.detailsUrl;
         return fetch(url).then(function(response) {
@@ -66,6 +66,7 @@ let pokemonRepository = (function () {
     }
 
     (function () {
+        let modalContainer = document.querySelector('#modal-container')
         function showModal(title, text) {
             let modalContainer = document.querySelector('#modal-container');
 
@@ -78,6 +79,7 @@ let pokemonRepository = (function () {
             let closeButtonElement = document.createElement('button');
             closeButtonElement.classList.add('modal-close');
             closeButtonElement.innerText = 'Close';
+            closeButtonElement.addEventListener('click', hideModal)
 
             let titleElement = document.createElement('h1');
             titleElement.innerText = title;
@@ -91,7 +93,26 @@ let pokemonRepository = (function () {
             modalContainer.appendChild(modal);
 
             modalContainer.classList.add('is-visible');
+
+            modalContainer.addEventListener('click', (e) => {
+             let target = e.target;
+              if (target === modalContainer) {
+                  hideModal()
+              }
+            })
         }
+
+        function hideModal() {
+            modalContainer.classList.remove('is-visible')
+        }
+
+        window.addEventListener('keydown', (e) => {
+            let modalContainer = document.querySelector('#modal-container');
+            if (e.key === 'escape' && modalContainer.classList.contains('is-visible')) {
+                hideModal()
+            }
+        })
+
         document.querySelector('#show-modal').addEventListener('click', () => {
             showModal('Modal Title', 'this is the modal content');
         })
