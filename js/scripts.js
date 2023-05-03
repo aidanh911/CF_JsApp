@@ -2,6 +2,8 @@ let pokemonRepository = (function () {
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=20';
 
+    (function () {
+
     function add(pokemon) {
         if (
             typeof pokemon === "object"
@@ -61,14 +63,12 @@ let pokemonRepository = (function () {
 
     function showDetails(pokemon) {
         loadDetails(pokemon).then( function (){
-            console.log(pokemon)
+            showModal(pokemon)
         })
     }
 
-    (function () {
         let modalContainer = document.querySelector('#modal-container')
-        function showModal(title, text) {
-            let modalContainer = document.querySelector('#modal-container');
+        function showModal(pokemon) {
 
             modalContainer.innerHTML = '';
 
@@ -82,14 +82,18 @@ let pokemonRepository = (function () {
             closeButtonElement.addEventListener('click', hideModal)
 
             let titleElement = document.createElement('h1');
-            titleElement.innerText = title;
+            titleElement.innerText = pokemon.name;
 
             let contentElement = document.createElement('p');
-            contentElement.innerText = text;
+            contentElement.innerText = pokemon.height;
+
+            let imageElement = document.createElement('img')
+            imageElement.src = pokemon.detailsUrl
 
             modal.appendChild(closeButtonElement);
             modal.appendChild(titleElement);
             modal.appendChild(contentElement);
+            modal.appendChild(imageElement)
             modalContainer.appendChild(modal);
 
             modalContainer.classList.add('is-visible');
@@ -129,6 +133,7 @@ let pokemonRepository = (function () {
 
 
 }) ()
+
 pokemonRepository.add({name: "Pikachu", detailsUrl: "https://pokeapi.co/api/v2/pokemon/5/",
     imageUrl:
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png",
@@ -141,3 +146,4 @@ pokemonRepository.loadList().then(function () {
         pokemonRepository.addListItem(pokemon);
     });
 });
+
