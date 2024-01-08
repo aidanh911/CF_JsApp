@@ -3,3 +3,33 @@
     background-image: linear-gradient(#6610f2, #6f42c1);
     border-radius: 10px;
 }
+
+.list-group {
+    width: 50%;
+    display: inline-block;
+}
+
+body {
+    text-align: center;
+    background-color: #8bb9fe;
+}
+
+.navbar img {
+    margin: auto;
+}
+
+
+
+
+
+.modal-img {
+    height: 200px;
+    width: 200px;
+}
+
+.btn-primary {
+    background-color: rebeccapurple;
+    width: 200px;
+}
+
+
