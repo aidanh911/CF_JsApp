@@ -64,7 +64,7 @@ let pokemonRepository = (function () {
                 item.imageUrl = details.sprites.front_default;
                 item.height = details.height;
                 item.weight = details.weight;
-                item.types = JSON.stringify(details.types);
+                item.types = details.types;
             })
         }
 
@@ -95,13 +95,11 @@ let pokemonRepository = (function () {
 
             let weightElement = $("<p>" + "weight: " + pokemon.weight + "</p>");
 
-            let typesElement = $("<p>" + "types: " + pokemon.types + "</p>");
 
             modalTitle.append(nameElement);
             modalBody.append(imageElementFront);
             modalBody.append(heightElement);
             modalBody.append(weightElement);
-            modalBody.append(typesElement);
 
 
 
