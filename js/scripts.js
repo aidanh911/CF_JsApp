@@ -30,7 +30,7 @@ let pokemonRepository = (function () {
             listPokemon.appendChild(button);
             pokemonList.appendChild(listPokemon);
 
-            button.addEventListener('click', function (event) {
+            button.addEventListener('click', function () {
                 showDetails(pokemon)
             })
         }
@@ -48,12 +48,12 @@ let pokemonRepository = (function () {
                         detailsUrl: item.url
                     };
                     add(pokemon);
-                    ;
+
                 });
             }).catch(function (e) {
                 console.error(e);
             })
-        };
+        }
 
 
         function loadDetails(item) {
@@ -80,14 +80,13 @@ let pokemonRepository = (function () {
         function showModal(pokemon) {
             let modalBody = $(".modal-body");
             let modalTitle = $(".modal-title");
-            let modalHeader = $(".modal-header");
 
             modalTitle.empty();
             modalBody.empty();
 
             let nameElement = $("<h1>" + pokemon.name + "</h1>");
 
-            let imageElementFront = $('<img class="modal-img" style="width50%">');
+            let imageElementFront = $('<img src= "" alt="" class="modal-img">');
             imageElementFront.attr("src", pokemon.imageUrl);
 
             let heightElement = $("<p>" + "height: " +
